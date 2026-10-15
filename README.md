@@ -2,7 +2,9 @@
 
 Учебный демонстрационный проект (не реальный бизнес): одностраничный сайт, который показывает полный цикл — от запроса к ИИ до публичной ссылки с рабочей приёмом заявок.
 
-**Стек:** HTML, CSS, JavaScript (без фреймворков), Cursor, Formspree, GitHub Pages.
+**Стек:** HTML, CSS, JavaScript (без фреймворков), Cursor, Formspree, Netlify.
+
+**Живое демо:** https://cleanstartdemo.netlify.app/
 
 ## Что внутри
 - `index.html` — структура: услуги с ценами, прайс-таблица, шаги заказа, FAQ, контакты, форма заявки
@@ -21,7 +23,7 @@
 Просто дважды открыть `index.html` в браузере.
 
 ## Публикация
-GitHub Pages: Settings → Pages → Deploy from branch → `main`, корень репозитория.
-Форма работает даже на GitHub Pages, потому что заявки принимает внешний сервис Formspree.
+Публикация: Netlify — Site settings → Build & deploy → Continuous deployment → "Trigger deploy" → "Clear cache and deploy site".
+Форма работает на статическом хостинге, потому что заявки принимает внешний сервис Formspree.
 
 ⚠️ **Перед публикацией**: замените `FORMSPREE_ENDPOINT` в `script.js` на собственный адрес формы, а также обновите canonical/OG-URL, телефон, WhatsApp и почту на реальные (сейчас там условные демо-данные). Не публикуйте чужие адреса форм и никакие секреты в открытом репозитории.

@@ -50,7 +50,6 @@ function scrollToSection(id) {
 
 function setFieldError(field, message) {
   field.classList.toggle("invalid", Boolean(message));
-  field.setAttribute("aria-invalid", String(Boolean(message)));
   const errorNode = document.getElementById(field.id + "-error");
   if (errorNode) {
     errorNode.textContent = message;
