@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleanStart — клининговая компания</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="logo" href="#">CleanStart</a>
+      <nav class="nav" aria-label="Основное меню">
+        <a href="#services">Услуги</a>
+        <a href="#advantages">Преимущества</a>
+        <a href="#order">Заказать</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="hero-eyebrow">Клининговая компания CleanStart</p>
+        <h1>Чистота, в которую влюбляешься</h1>
+        <p class="hero-text">
+          Берём на себя уборку квартир, офисов и домов. Вы отдыхаете —
+          мы наводим порядок до блеска.
+        </p>
+        <button class="btn btn-primary" type="button" id="order-btn">
+          Заказать уборку
+        </button>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <h2>Наши услуги</h2>
+        <p class="section-lead">Выберите формат, который подходит именно вам</p>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">⌂</div>
+            <h3>Уборка квартир</h3>
+            <p>Регулярная или разовая уборка комнат, кухни и санузла. Аккуратно, быстро и без лишней суеты.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">▣</div>
+            <h3>Уборка офисов</h3>
+            <p>Поддерживаем чистоту на рабочих местах, в переговорных и зонах отдыха. Можно после рабочего дня.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">✦</div>
+            <h3>Генеральная уборка</h3>
+            <p>Глубокая чистка всех поверхностей, труднодоступных мест и деталей. Идеально перед праздником или переездом.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="advantages">
+      <div class="container">
+        <h2>Почему выбирают CleanStart</h2>
+        <p class="section-lead">Простые вещи, которые делают уборку спокойной</p>
+        <ul class="advantages">
+          <li>
+            <strong>Проверенная команда</strong>
+            Клинеры с опытом, без случайных людей. Мы дорожим репутацией.
+          </li>
+          <li>
+            <strong>Свои средства и инвентарь</strong>
+            Привозим всё необходимое. Вам не нужно ничего покупать заранее.
+          </li>
+          <li>
+            <strong>Гибкий график</strong>
+            Утром, вечером или в выходные — подстроимся под ваш день.
+          </li>
+          <li>
+            <strong>Честная цена</strong>
+            Стоимость известна до начала работ. Без скрытых доплат.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="order">
+      <div class="container form-wrap">
+        <h2>Оставить заявку</h2>
+        <p class="section-lead">Заполните форму — мы свяжемся с вами, чтобы уточнить детали</p>
+
+        <!-- Форма демонстрационная: данные никуда не отправляются -->
+        <form class="order-form" id="order-form" novalidate>
+          <label>
+            Имя
+            <input type="text" name="name" id="name" placeholder="Как к вам обращаться" required>
+          </label>
+          <label>
+            Телефон
+            <input type="tel" name="phone" id="phone" placeholder="+7 900 000-00-00" required>
+          </label>
+          <label>
+            Услуга
+            <select name="service" id="service" required>
+              <option value="">Выберите услугу</option>
+              <option value="apartment">Уборка квартир</option>
+              <option value="office">Уборка офисов</option>
+              <option value="general">Генеральная уборка</option>
+            </select>
+          </label>
+          <button class="btn btn-primary" type="submit">Отправить заявку</button>
+          <p class="form-note">Сервер пока не подключён. Заявка никуда не уходит.</p>
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 CleanStart. Вымышленная клининговая компания для учебного проекта.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
