@@ -11,9 +11,9 @@ const dateField = document.getElementById("date");
 const commentField = document.getElementById("comment");
 const consentField = document.getElementById("consent");
 
-// Вставьте сюда адрес формы Formspree, например: "https://formspree.io/f/xxxxxxxx"
-// Пока строка пустая — заявка никуда не отправляется.
-// ⚠️ Перед публикацией репозитория публично замените адрес на свой собственный.
+// Укажите адрес формы Formspree, например: "https://formspree.io/f/xxxxxxxx"
+// Если оставить строку пустой, заявка не отправится.
+// Перед публикацией замените адрес на свой собственный и проверьте его работу.
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xvkzdozd";
 let toastTimeout;
 
