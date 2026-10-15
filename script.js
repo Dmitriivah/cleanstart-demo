@@ -9,7 +9,7 @@ const commentField = document.getElementById("comment");
 
 // Вставьте сюда адрес формы Formspree, например: "https://formspree.io/f/xxxxxxxx"
 // Пока строка пустая — заявка никуда не отправляется.
-const FORMSPREE_ENDPOINT = "";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xvkzdozd";
 
 function scrollToSection(id) {
   const section = document.getElementById(id);
