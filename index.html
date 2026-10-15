@@ -150,7 +150,6 @@
           <h3 class="form-title">Оставить заявку</h3>
           <p class="form-intro">Обязательные поля: имя, телефон, услуга и желаемая дата.</p>
 
-          <!-- Formspree: адрес формы задаётся в script.js (FORMSPREE_ENDPOINT). Пока он пустой — заявка не отправляется. -->
           <form class="order-form" id="order-form" method="POST" novalidate>
             <label>
               Имя
@@ -174,7 +173,7 @@
             </label>
             <label>
               Желаемая дата
-              <input type="date" name="date" id="date" required>
+              <input type="date" name="date" id="date" min="" required>
               <span class="field-error" id="date-error"></span>
             </label>
             <label>
@@ -183,7 +182,7 @@
               <span class="field-error" id="comment-error"></span>
             </label>
             <button class="btn btn-primary" type="submit">Отправить заявку</button>
-            <p class="form-note" id="form-note">Formspree пока не подключён: адрес формы не задан, заявка никуда не уходит.</p>
+            <p class="form-note" id="form-note">Оставьте заявку, и мы свяжемся с вами для уточнения деталей.</p>
             <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
           </form>
         </div>
@@ -191,9 +190,13 @@
     </section>
   </main>
 
+  <div class="success-toast" id="success-toast" role="status" aria-live="polite" aria-atomic="true" hidden>
+    Заявка отправлена. Скоро с вами свяжутся.
+  </div>
+
   <footer class="footer">
     <div class="container footer-inner">
-      <p>© 2026 CleanStart. Вымышленная клининговая компания для учебного проекта.</p>
+      <p>© 2026 CleanStart.</p>
       <p>Тел.: +7 (495) 000-12-34</p>
     </div>
   </footer>
