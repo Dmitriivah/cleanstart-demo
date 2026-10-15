@@ -4,6 +4,12 @@ const formMessage = document.getElementById("form-message");
 const nameField = document.getElementById("name");
 const phoneField = document.getElementById("phone");
 const serviceField = document.getElementById("service");
+const dateField = document.getElementById("date");
+const commentField = document.getElementById("comment");
+
+// Вставьте сюда адрес формы Formspree, например: "https://formspree.io/f/xxxxxxxx"
+// Пока строка пустая — заявка никуда не отправляется.
+const FORMSPREE_ENDPOINT = "";
 
 function scrollToSection(id) {
   const section = document.getElementById(id);
@@ -12,35 +18,105 @@ function scrollToSection(id) {
   }
 }
 
+function setFieldError(field, message) {
+  field.classList.toggle("invalid", Boolean(message));
+  const errorNode = document.getElementById(field.id + "-error");
+  if (errorNode) {
+    errorNode.textContent = message;
+  }
+}
+
+function clearFieldError(field) {
+  setFieldError(field, "");
+}
+
+function validateForm() {
+  const name = nameField.value.trim();
+  const phone = phoneField.value.trim();
+  const service = serviceField.value;
+  const date = dateField.value.trim();
+  let isValid = true;
+
+  if (!name) {
+    setFieldError(nameField, "Укажите имя.");
+    isValid = false;
+  } else {
+    clearFieldError(nameField);
+  }
+
+  if (!phone) {
+    setFieldError(phoneField, "Укажите телефон.");
+    isValid = false;
+  } else if (phone.replace(/\D/g, "").length < 6) {
+    setFieldError(phoneField, "Введите номер полностью, не меньше 6 цифр.");
+    isValid = false;
+  } else {
+    clearFieldError(phoneField);
+  }
+
+  if (!service) {
+    setFieldError(serviceField, "Выберите услугу.");
+    isValid = false;
+  } else {
+    clearFieldError(serviceField);
+  }
+
+  if (!date) {
+    setFieldError(dateField, "Укажите желаемую дату.");
+    isValid = false;
+  } else {
+    clearFieldError(dateField);
+  }
+
+  clearFieldError(commentField);
+  return isValid;
+}
+
 orderButton.addEventListener("click", function () {
   scrollToSection("order");
 });
 
 orderForm.addEventListener("submit", function (event) {
-  event.preventDefault(); // Форма демонстрационная: данные никуда не отправляются
+  event.preventDefault();
 
-  const name = nameField.value.trim();
-  const phone = phoneField.value.trim();
-  const service = serviceField.value;
+  formMessage.classList.remove("info", "error");
+  formMessage.textContent = "";
 
-  nameField.classList.toggle("invalid", !name);
-  phoneField.classList.toggle("invalid", !phone);
-  serviceField.classList.toggle("invalid", !service);
-
-  formMessage.classList.remove("success", "error");
-
-  if (!name || !phone || !service) {
+  if (!validateForm()) {
     formMessage.classList.add("error");
-    formMessage.textContent = "Пожалуйста, заполните все обязательные поля.";
+    formMessage.textContent = "Проверьте обязательные поля и исправьте ошибки.";
     return;
   }
 
-  formMessage.classList.add("success");
-  formMessage.textContent = "Это демонстрационная форма. Заявка пока не отправляется";
+  if (!FORMSPREE_ENDPOINT) {
+    formMessage.classList.add("info");
+    formMessage.textContent = "Formspree пока не подключён. Заявка не отправлена.";
+    return;
+  }
+
+  const formData = new FormData(orderForm);
+
+  fetch(FORMSPREE_ENDPOINT, {
+    method: "POST",
+    headers: { Accept: "application/json" },
+    body: formData
+  })
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("Formspree returned an error");
+      }
+      formMessage.classList.add("info");
+      formMessage.textContent = "Заявка отправлена через Formspree.";
+      orderForm.reset();
+    })
+    .catch(function () {
+      formMessage.classList.add("error");
+      formMessage.textContent = "Не удалось отправить заявку. Проверьте адрес Formspree.";
+    });
 });
 
-[nameField, phoneField, serviceField].forEach(function (field) {
+[nameField, phoneField, serviceField, dateField, commentField].forEach(function (field) {
   field.addEventListener("input", function () {
-    field.classList.remove("invalid");
+    clearFieldError(field);
   });
 });
